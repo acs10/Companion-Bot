@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   void _onSpeechResult(SpeechRecognitionResult result) {
     setState(() {
       _lastWords = result.recognizedWords;
-      print(_lastWords);
+      homeStore.sendVoiceText(context, _lastWords);
     });
   }
 
