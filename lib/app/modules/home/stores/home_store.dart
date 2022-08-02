@@ -9,6 +9,7 @@ class HomeStore extends NotifierStore<Exception, int> {
 
   Future<void> sendVoiceText(BuildContext context, String voiceText) async {
     print(voiceText);
+
     HttpClient _client = Modular.get<HttpClient>();
     try {
       Map<String, dynamic> body = {'voiceText': voiceText};
@@ -18,6 +19,15 @@ class HomeStore extends NotifierStore<Exception, int> {
       }
     } catch (e) {
       print(e);
+    }
+  }
+
+  Future<void> receiverVoiceText() async {
+    HttpClient _client = Modular.get<HttpClient>();
+    try {
+      print(await _client.getDataNoToken(''));
+    } finally {
+      // _client.close();
     }
   }
 }
