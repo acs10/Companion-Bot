@@ -4,6 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import '../stores/home_store.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
+import 'package:text_to_speech/text_to_speech.dart';
 
 class HomePage extends StatefulWidget {
   final String title;
@@ -19,6 +20,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   SpeechToText _speechToText = SpeechToText();
   bool _speechEnabled = false;
   String _lastWords = '';
+  TextToSpeech tts = TextToSpeech();
 
   @override
   void initState() {
@@ -48,7 +50,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   void _onSpeechResult(SpeechRecognitionResult result) {
     setState(() {
       _lastWords = result.recognizedWords;
+      //Speech_to_text
       homeStore.sendVoiceText(context, _lastWords);
+      //text_to_speech
+      tts.speak(_lastWords);
     });
   }
 

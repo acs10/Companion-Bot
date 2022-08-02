@@ -51,6 +51,7 @@ dev_dependencies:
   triple_test: ^1.0.0
   modular_test: ^2.0.0
   speech_to_text: ^5.6.0
+  text_to_speech: ^0.2.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
