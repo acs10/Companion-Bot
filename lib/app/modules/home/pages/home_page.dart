@@ -4,7 +4,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 import '../stores/home_store.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
-// import 'package:speech_to_text/speech_to_text.dart' as speechToText;
 
 class HomePage extends StatefulWidget {
   final String title;
@@ -20,69 +19,32 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   SpeechToText _speechToText = SpeechToText();
   bool _speechEnabled = false;
   String _lastWords = '';
-  // late speechToText.SpeechToText speech;
-  // String textString = "Press The Button";
-  // bool isListen = false;
-  // double confidence = 1.0;
-
-  // void listenVoice() async {
-  //   if (!isListen) {
-  //     bool avail = await speech.initialize();
-  //     if (avail) {
-  //       setState(() {
-  //         isListen = true;
-  //       });
-  //       speech.listen(onResult: (value) {
-  //         setState(() {
-  //           textString = value.recognizedWords;
-  //           if (value.hasConfidenceRating && value.confidence > 0) {
-  //             confidence = value.confidence;
-  //           }
-  //         });
-  //       });
-  //     }
-  //   } else {
-  //     setState(() {
-  //       isListen = false;
-  //     });
-  //     speech.stop();
-  //   }
-  // }
 
   @override
   void initState() {
     super.initState();
     _initSpeech();
-    // speech = speechToText.SpeechToText();
     _tabController = TabController(
       length: _kTabPages.length,
       vsync: this,
     );
   }
 
-  /// This has to happen only once per app
   void _initSpeech() async {
     _speechEnabled = await _speechToText.initialize();
     setState(() {});
   }
 
-  /// Each time to start a speech recognition session
   void _startListening() async {
     await _speechToText.listen(onResult: _onSpeechResult);
     setState(() {});
   }
 
-  /// Manually stop the active speech recognition session
-  /// Note that there are also timeouts that each platform enforces
-  /// and the SpeechToText plugin supports setting timeouts on the
-  /// listen method.
   void _stopListening() async {
     await _speechToText.stop();
     setState(() {});
   }
 
-  /// This is the callback that the SpeechToText plugin calls when
-  /// the platform returns recognized words.
   void _onSpeechResult(SpeechRecognitionResult result) {
     setState(() {
       _lastWords = result.recognizedWords;
