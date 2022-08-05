@@ -7,4 +7,8 @@ class TextList(viewsets.ModelViewSet):
     queryset = Text.objects.all()
     serializer_class = TextSerializer
 
+class TextList2(viewsets.ModelViewSet):
+    queryset = Text.objects.all()
+    serializer_class = TextSerializer
+
 

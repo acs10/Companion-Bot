@@ -52,6 +52,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       _lastWords = result.recognizedWords;
       //Speech_to_text
       homeStore.sendVoiceText(context, _lastWords);
+      homeStore.receiverVoiceText();
       //text_to_speech
       // tts.speak(_lastWords);
     });
