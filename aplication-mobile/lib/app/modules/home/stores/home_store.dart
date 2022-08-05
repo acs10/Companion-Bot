@@ -25,7 +25,7 @@ class HomeStore extends NotifierStore<Exception, int> {
     HttpClient _client = Modular.get<HttpClient>();
     try {
       Response response =
-          await _client.getDataNoToken('http://10.0.2.2:8000/nlpbot/get/573');
+          await _client.getDataNoToken('http://10.0.2.2:8000/nlpbot/get');
       print(response.body);
     } finally {
       // _client.close();
