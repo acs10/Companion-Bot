@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       //Speech_to_text
       homeStore.sendVoiceText(context, _lastWords);
       //text_to_speech
-      tts.speak(_lastWords);
+      // tts.speak(_lastWords);
     });
   }
 

@@ -9,11 +9,11 @@ class HomeStore extends NotifierStore<Exception, int> {
 
   Future<void> sendVoiceText(BuildContext context, String voiceText) async {
     print(voiceText);
-
-    HttpClient _client = Modular.get<HttpClient>();
+    HttpClient _client = Modular.get();
     try {
-      Map<String, dynamic> body = {'voiceText': voiceText};
-      Response response = await _client.putDataNoToken(body, voiceText);
+      Map<String, dynamic> body = {'body': voiceText};
+      Response response = await _client.postDataNoToken(
+          body, 'http://10.0.2.2:8000/nlpbot/post');
       if (response.statusCode >= 200 && response.statusCode <= 202) {
         print("send message ok");
       }

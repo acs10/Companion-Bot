@@ -7,6 +7,8 @@ class HttpClient {
   }
 
   postDataNoToken(Map body, String url) async {
+    print(Uri.parse(url));
+    print(body);
     return await http.post(Uri.parse(url), body: body);
   }
 

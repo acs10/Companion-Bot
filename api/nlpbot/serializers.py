@@ -4,7 +4,7 @@ from .models import Text
 class TextSerializer(serializers.ModelSerializer):
         
     class Meta: 
-        fields = ('id', 'body','texto')
+        fields = ('id','body')
         model = Text
 
 
