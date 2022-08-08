@@ -14,7 +14,7 @@ class HomeStore extends NotifierStore<Exception, int> {
       Response response = await _client.postDataNoToken(
           body, 'http://10.0.2.2:8000/nlpbot/post');
       if (response.statusCode >= 200 && response.statusCode <= 202) {
-        print("send message ok");
+        receiverVoiceText();
       }
     } catch (e) {
       print(e);
@@ -26,7 +26,9 @@ class HomeStore extends NotifierStore<Exception, int> {
     try {
       Response response =
           await _client.getDataNoToken('http://10.0.2.2:8000/nlpbot/get');
-      print(response.body);
+      if (response.statusCode >= 200 && response.statusCode <= 202) {
+        print(response.body);
+      }
     } finally {
       // _client.close();
     }
