@@ -1,4 +1,6 @@
 // ignore_for_file: deprecated_member_use
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import '../stores/home_store.dart';
@@ -50,12 +52,21 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   void _onSpeechResult(SpeechRecognitionResult result) {
     setState(() {
       _lastWords = result.recognizedWords;
-      //Speech_to_text
+    });
+  }
+
+  void sendMessageStore() {
+    Timer(const Duration(seconds: 3), () {
       homeStore.sendVoiceText(context, _lastWords);
       homeStore.receiverVoiceText();
-      //text_to_speech
-      // tts.speak(_lastWords);
     });
+    // print(_lastWords);
+    // tts.speak(_lastWords);
+    //Speech_to_text
+    // homeStore.sendVoiceText(context, _lastWords);
+    // homeStore.receiverVoiceText();
+    //text_to_speech
+    // tts.speak(_lastWords);
   }
 
   final _kTabPages = <Widget>[
@@ -71,6 +82,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         ),
       ),
     ),
+
     const Center(child: Icon(Icons.alarm, size: 64.0, color: Colors.cyan)),
     const Center(child: Icon(Icons.forum, size: 64.0, color: Colors.blue)),
   ];
@@ -97,10 +109,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 235.0),
         child: FlatButton(
-          onPressed:
-              // If not yet listening for speech start, otherwise stop
-              _speechToText.isNotListening ? _startListening : _stopListening,
-          // tooltip: 'Listen',
+          onPressed: () => {
+            if (_speechToText.isNotListening)
+              {
+                _startListening(),
+                sendMessageStore(),
+              }
+            else
+              _stopListening()
+          },
           child: Image.asset(
             "lib/app/modules/home/assets/homePage/speak.png",
             width: 200,
