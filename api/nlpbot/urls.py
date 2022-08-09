@@ -1,12 +1,10 @@
 from rest_framework.routers import DefaultRouter
 from django.urls import path
-from .views import TextList, TextList2
+from .views import Send
 
 app_name = 'api'
 
-router = DefaultRouter(trailing_slash=False)
-router.register(r'post', TextList)
-router.register(r'get', TextList2)
-
-urlpatterns = router.urls
+urlpatterns = [
+    path(r'send', Send.as_view()),
+    ]
 
