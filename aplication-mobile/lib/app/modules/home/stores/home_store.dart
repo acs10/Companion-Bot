@@ -3,9 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_triple/flutter_triple.dart';
 import 'package:http/http.dart';
+import 'package:text_to_speech/text_to_speech.dart';
 
 class HomeStore extends NotifierStore<Exception, int> {
   HomeStore() : super(0);
+  TextToSpeech tts = TextToSpeech();
 
   Future<void> sendVoiceText(BuildContext context, String voiceText) async {
     HttpClient _client = Modular.get();
@@ -27,10 +29,13 @@ class HomeStore extends NotifierStore<Exception, int> {
       Response response =
           await _client.getDataNoToken('http://10.0.2.2:8000/nlpbot/get');
       if (response.statusCode >= 200 && response.statusCode <= 202) {
-        print(response.body);
+        String result = response.body;
+        List result2 = result.split('"body":"');
+        List result3 = result2[1].split('"}]');
+        tts.speak(result3[0]);
       }
-    } finally {
-      // _client.close();
+    } catch (e) {
+      print(e);
     }
   }
 }

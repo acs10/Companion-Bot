@@ -1,6 +1,5 @@
 // ignore_for_file: deprecated_member_use
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import '../stores/home_store.dart';
@@ -59,7 +58,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     Timer(const Duration(seconds: 3), () {
       homeStore.sendVoiceText(context, _lastWords);
     });
-
     // print(_lastWords);
     // tts.speak(_lastWords);
     //Speech_to_text
