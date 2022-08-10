@@ -7,11 +7,16 @@ class ProcessText():
 
     def processReceiver(self):
         instance = self.text
-        print(self.tokenize())
         instanceSplitText = str(instance).split(',')
         instanceSplitid = instanceSplitText[1].split(')')  #String
         text = instanceSplitText[3].split(')])]')          #String
-        return [{"id": int(instanceSplitid[0]),"body": text[0]}]
+        # print(self.tokenize(text))
+        # return [{"id": int(instanceSplitid[0]),"body": text[0]}]
+        return [{"id": int(instanceSplitid[0]),"body": self.tokenize(text)}]
 
-    def tokenize(self):
-        return word_tokenize(str(self.text))
+    def tokenize(self, variable):
+        openText = word_tokenize(str(variable))
+        for i in openText:
+            if i == 'are':
+                return 'passed'
+        return variable[0]
