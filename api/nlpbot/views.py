@@ -3,15 +3,15 @@ from rest_framework import status
 from .serializers import TextSerializer
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from processText.receiverText import ProcessText
 
 
 class Send(APIView):
     def get(self, request):
         query = Text.objects.order_by('id').reverse()[:1]
         serializer = TextSerializer(query, many=True)
-        print(serializer.data)
-        return Response(serializer.data)
-        # return Response(['say'])
+        instance = ProcessText(serializer.data)
+        return Response(instance.processReceiver()) 
 
     def post(self, request):
         serializer = TextSerializer(data=request.data)
