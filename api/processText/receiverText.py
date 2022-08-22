@@ -1,5 +1,6 @@
 from cgitb import text
 from nltk.tokenize import word_tokenize
+from processText.dialogManager import DialogManager
 import re
 
 class ProcessText():
@@ -34,10 +35,7 @@ class ProcessText():
         preClean = self.preProcess(variable)
         openText = word_tokenize(str(preClean))
         resultProProcess = self.proProcessTokenList(openText)
-        print(resultProProcess)
-        for i in resultProProcess:
-            if i == 'are':
-                return 'passed'
+        DialogManager().dialogPolicy(resultProProcess)
         return variable[0]
 
 
