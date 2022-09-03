@@ -43,6 +43,29 @@ class DialogManager():
                     self.burden += 2
                     self.ticket = 'luz' 
 
+                #Callback Dialogs to User (Openning)
+                elif self.type == 'user' and i == 'dia':
+                    self.burden += 2
+                    self.ticket = 'dia'  
+                
+                #Callback Dialogs to User (Generic)
+                elif self.type == 'user' and i == 'dor':
+                    self.burden += 2
+                    self.ticket = 'dor'  
+
+                elif self.type == 'user' and i == 'sim':
+                    self.burden += 2
+                    self.ticket = 'sim'  
+
+                elif self.type == 'user' and i == 'não':
+                    self.burden += 2
+                    self.ticket = 'nao'  
+
+                #Callback Dialogs to User (addList)
+                elif self.type == 'user' and i == 'acabou':
+                    self.burden += 2
+                    self.ticket = 'acabou'  
+
                 #TODO Tem que fazer com User pois encadea vários dialogos
             return Dialog().dialogReturn(self.burden, self.type, self.local, self.ticket)       
         except:

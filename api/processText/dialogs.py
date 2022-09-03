@@ -23,4 +23,24 @@ class Dialog():
         if type == 'user' and burden == 2 and ticket == 'luz':
             return  'Ok, a luz foi ligada'
 
+        #Dialogs to User (Openning)
+        if type == 'user' and burden == 2 and ticket == 'dia':
+            if local == 'quarto':
+                return 'Bom dia, como vai nessa manhã, dormiu bem?'
+            else:
+                return  'Bom dia, como vai nesssa manhã'
+
+        #Dialogs to User (Generic)
+        if type == 'user' and burden == 2 and ticket == 'dor':
+            return  'Gostaria de tomar um remédio'
+        if type == 'user' and burden == 2 and ticket == 'sim':
+            return  'Ok, realizado'
+        if type == 'user' and burden == 2 and ticket == 'nao':
+            return  'Ok'
+            
+        #Dialogs to User (addList)
+        if type == 'user' and burden == 2 and ticket == 'acabou':
+            return  'Gostaria de incluir esse item na lista de compras'
+
+        #Não entendeu entrada 
         return 'não compreendi, poderia falar novamente'
