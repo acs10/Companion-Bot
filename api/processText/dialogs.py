@@ -1,5 +1,5 @@
 class Dialog():
-    def dialogReturn(self, burden, type, local, ticket):
+    def dialogReturn(self, burden, type, local, ticket, events, medicineList, shoppingList):
 
         #Dialogs Sensors
         if type == 'smoke_detector' and burden == 1:
@@ -37,10 +37,30 @@ class Dialog():
             return  'Ok, realizado'
         if type == 'user' and burden == 2 and ticket == 'nao':
             return  'Ok'
-            
+
         #Dialogs to User (addList)
         if type == 'user' and burden == 2 and ticket == 'acabou':
             return  'Gostaria de incluir esse item na lista de compras'
+
+        if type == 'user' and burden == 2 and ticket == 'compras':
+            provString = 'Você as seguintes produtos para comprar'
+            for i in shoppingList:
+                provString += (','+str(i))
+            return  provString
+
+        #Dialogs to User (Events)
+        if type == 'user' and burden == 2 and ticket == 'evento':
+            provString = 'Você tem o'
+            for i in events:
+                provString += (','+str(i))
+            return  provString
+
+        #Dialogs to User (Medicine)
+        if type == 'user' and burden == 2 and ticket == 'remedio':
+            provString = 'Você tem que tomar o remédio para'
+            for i in medicineList:
+                provString += (','+str(i))
+            return  provString
 
         #Não entendeu entrada 
         return 'não compreendi, poderia falar novamente'

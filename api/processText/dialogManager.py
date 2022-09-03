@@ -7,10 +7,10 @@ class DialogManager():
         self.local = 'quarto'
         self.ticket = ''
 
-        self.medicineList = []
-        self.shoppingList = []
+        self.medicineList = ['Diabétes, Jardiance,  1 comprimido de 25mg ']
+        self.shoppingList = ['ovos','leite','pilhas para o controle','pão']
         
-        self.events = []
+        self.events = ['aniversário da sua filha']
         self.hoursEvents = []
 
     def dialogPolicy(self, textList, variable):
@@ -66,8 +66,22 @@ class DialogManager():
                     self.burden += 2
                     self.ticket = 'acabou'  
 
+                elif self.type == 'user' and i == 'compras' :
+                    self.burden += 2
+                    self.ticket = 'compras' 
+
+                #Callback Dialogs to User (Events)
+                elif self.type == 'user' and i == 'agendado' or i == 'evento':
+                    self.burden += 2
+                    self.ticket = 'evento'  
+
+                #Callback Dialogs to User (Events)
+                elif self.type == 'user' and i == 'remédio':
+                    self.burden += 2
+                    self.ticket = 'remedio'  
+
                 #TODO Tem que fazer com User pois encadea vários dialogos
-            return Dialog().dialogReturn(self.burden, self.type, self.local, self.ticket)       
+            return Dialog().dialogReturn(self.burden, self.type, self.local, self.ticket, self.events, self.medicineList, self.shoppingList)       
         except:
             return variable[0]
     
