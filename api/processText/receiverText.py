@@ -35,7 +35,6 @@ class ProcessText():
         preClean = self.preProcess(variable)
         openText = word_tokenize(str(preClean))
         resultProProcess = self.proProcessTokenList(openText)
-        DialogManager().dialogPolicy(resultProProcess)
-        return variable[0]
+        return DialogManager().dialogPolicy(resultProProcess, variable)
 
 
