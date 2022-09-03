@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   }
 
   void sendMessageStore() {
-    Timer(const Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 5), () {
       homeStore.sendVoiceText(context, _lastWords);
     });
     // print(_lastWords);
