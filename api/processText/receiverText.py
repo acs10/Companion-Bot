@@ -36,10 +36,23 @@ class ProcessText():
         preClean = self.preProcess(variable)
         openText = word_tokenize(str(preClean))
         resultProProcess = self.proProcessTokenList(openText)
+        clean = self.stopwords(resultProProcess)
         self.freqDisc(resultProProcess) 
         self.target(resultProProcess)
-        self.stopwords(resultProProcess)
-        return DialogManager().dialogPolicy(resultProProcess, variable)
+        return DialogManager().dialogPolicy(clean, variable)
+
+    def stopwords(self, list):
+        # baixa as stopwords
+        nltk.download('stopwords')
+        # para escolher as stopwords do português adicionamos a opçaõ de língua "portuguese"
+        stopwords = nltk.corpus.stopwords.words('portuguese')
+        new_list = []
+        for i in list:
+            if i in stopwords:
+                pass
+            else:
+                new_list.append(i)
+        return new_list
 
     def freqDisc(self, list):
         fd = FreqDist(list)
@@ -79,15 +92,3 @@ class ProcessText():
         regexp_tagger = nltk.RegexpTagger(patterns)
         print(regexp_tagger.tag(list))
 
-    def stopwords(self, list):
-        # baixa as stopwords
-        nltk.download('stopwords')
-        # para escolher as stopwords do português adicionamos a opçaõ de língua "portuguese"
-        stopwords = nltk.corpus.stopwords.words('portuguese')
-        new_list = []
-        for i in list:
-            if i in stopwords:
-                pass
-            else:
-                new_list.append(i)
-        print(new_list)
