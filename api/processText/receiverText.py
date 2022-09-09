@@ -36,10 +36,10 @@ class ProcessText():
         preClean = self.preProcess(variable)
         openText = word_tokenize(str(preClean))
         resultProProcess = self.proProcessTokenList(openText)
-        clean = self.stopwords(resultProProcess)
+        clean = self.stopwords(resultProProcess) #Verificar usabilidade
         self.freqDisc(resultProProcess) 
         self.target(resultProProcess)
-        return DialogManager().dialogPolicy(clean, variable)
+        return DialogManager().dialogPolicy(resultProProcess, variable)
 
     def stopwords(self, list):
         # baixa as stopwords
