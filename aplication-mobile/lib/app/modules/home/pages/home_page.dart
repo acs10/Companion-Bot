@@ -57,14 +57,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   void sendMessageStore() {
     Timer(const Duration(seconds: 5), () {
       homeStore.sendVoiceText(context, _lastWords);
+      _stopListening();
     });
-    // print(_lastWords);
-    // tts.speak(_lastWords);
-    //Speech_to_text
-    // homeStore.sendVoiceText(context, _lastWords);
-    // homeStore.receiverVoiceText();
-    //text_to_speech
-    // tts.speak(_lastWords);
   }
 
   final _kTabPages = <Widget>[
@@ -81,8 +75,32 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       ),
     ),
 
-    const Center(child: Icon(Icons.alarm, size: 64.0, color: Colors.cyan)),
-    const Center(child: Icon(Icons.forum, size: 64.0, color: Colors.blue)),
+//remove after
+    const Padding(
+      padding: EdgeInsets.only(top: 250.0),
+      child: Align(
+        alignment: Alignment.center,
+        child: Padding(
+          padding: EdgeInsets.only(top: 16),
+          child: Text('Toque para Perguntar',
+              style: TextStyle(fontSize: 14, color: Colors.black)),
+        ),
+      ),
+    ),
+
+    const Padding(
+      padding: EdgeInsets.only(top: 250.0),
+      child: Align(
+        alignment: Alignment.center,
+        child: Padding(
+          padding: EdgeInsets.only(top: 16),
+          child: Text('Toque para Perguntar',
+              style: TextStyle(fontSize: 14, color: Colors.black)),
+        ),
+      ),
+    ),
+    // const Center(child: Icon(Icons.alarm, size: 64.0, color: Colors.cyan)),
+    // const Center(child: Icon(Icons.forum, size: 64.0, color: Colors.blue)),
   ];
   static const _kTabs = <Tab>[
     Tab(icon: Icon(Icons.home), text: 'Inicial'),

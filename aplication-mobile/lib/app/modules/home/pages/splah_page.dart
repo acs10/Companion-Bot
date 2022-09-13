@@ -16,7 +16,7 @@ class _SplahPageState extends State<SplahPage> {
   final HomeStore homeStore = Modular.get();
   @override
   Widget build(BuildContext context) {
-    Timer(const Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 4), () {
       Modular.to.pushNamed('/HomePage');
     });
     return Scaffold(
@@ -35,7 +35,7 @@ class _SplahPageState extends State<SplahPage> {
                 alignment: Alignment.center,
                 child: Padding(
                   padding: EdgeInsets.only(top: 8, right: 20),
-                  child: Text('BOT-FRIEND',
+                  child: Text('COMPANION-BOT',
                       style: TextStyle(fontSize: 34, color: Colors.white)),
                 ),
               ),

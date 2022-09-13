@@ -1,5 +1,5 @@
 class Dialog():
-    def dialogReturn(self, burden, type, local, ticket, events, medicineList, shoppingList):
+    def dialogReturn(self, burden, type, local, ticket, events, hours, medicineList, shoppingList):
 
         #Dialogs Sensors
         if type == 'smoke_detector' and burden == 1:
@@ -30,6 +30,13 @@ class Dialog():
             else:
                 return  'Bom dia, como vai nesssa manhã'
 
+        if type == 'user' and burden == 2 and ticket == 'tarde':
+            return 'Boa Tarde'
+
+        #Dialogs to User (Closure)
+        if type == 'user' and burden == 2 and ticket == 'noite':
+            return 'Boa noite'
+
         #Dialogs to User (Generic)
         if type == 'user' and burden == 2 and ticket == 'dor':
             return  'Gostaria de tomar um remédio'
@@ -55,12 +62,28 @@ class Dialog():
                 provString += (','+str(i))
             return  provString
 
+        if type == 'user' and burden == 2 and ticket == 'horas':
+            provStringEvent = 'O evento do'
+            provStringHoras = 'é vai ser as '
+            for i in events:
+                provStringEvent += (','+str(i))
+            for i in hours:
+                provStringHoras += (','+str(i))
+            return provStringEvent+provStringHoras
+
         #Dialogs to User (Medicine)
         if type == 'user' and burden == 2 and ticket == 'remedio':
             provString = 'Você tem que tomar o remédio para'
             for i in medicineList:
                 provString += (','+str(i))
             return  provString
+
+        #Free Dialogs
+        if type == 'user' and burden == 3 and ticket == 'nome':
+            return  'Meu nome é Lizzy'
+
+        if type == 'user' and burden == 4 and ticket == 'nome':
+            return  'Seu nome é Alfredo Junior Carneiro'
 
         #Não entendeu entrada 
         return 'não compreendi, poderia falar novamente'

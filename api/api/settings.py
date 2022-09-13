@@ -83,6 +83,7 @@ WSGI_APPLICATION = 'api.wsgi.application'
 #     }
 # }
 
+#BD LOCAL
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -93,6 +94,18 @@ DATABASES = {
         'PORT': '3306',
     }
 }
+
+#BD HOSPEDADO
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'id19540178_bot',
+#         'USER': 'id19540178_root',
+#         'PASSWORD': '-lPWbXQk5L/v-Tji',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
