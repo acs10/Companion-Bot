@@ -35,7 +35,7 @@ class _SplahPageState extends State<SplahPage> {
                 alignment: Alignment.center,
                 child: Padding(
                   padding: EdgeInsets.only(top: 8, right: 20),
-                  child: Text('BOT-LIZZY',
+                  child: Text('COMPANION-BOT',
                       style: TextStyle(fontSize: 34, color: Colors.white)),
                 ),
               ),
