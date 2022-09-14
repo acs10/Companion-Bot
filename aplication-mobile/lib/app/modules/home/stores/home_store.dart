@@ -14,7 +14,7 @@ class HomeStore extends NotifierStore<Exception, int> {
     try {
       Map<String, dynamic> body = {'body': voiceText};
       Response response = await _client.postDataNoToken(
-          body, 'http://10.0.2.2:8000/nlpbot/send');
+          body, 'http://192.168.137.1:8000/nlpbot/send');
       if (response.statusCode >= 200 && response.statusCode <= 202) {
         receiverVoiceText();
       }
@@ -27,7 +27,7 @@ class HomeStore extends NotifierStore<Exception, int> {
     HttpClient _client = Modular.get<HttpClient>();
     try {
       Response response =
-          await _client.getDataNoToken('http://10.0.2.2:8000/nlpbot/send');
+          await _client.getDataNoToken('http://192.168.137.1:8000/nlpbot/send');
       if (response.statusCode >= 200 && response.statusCode <= 202) {
         String result = response.body;
         List result2 = result.split('"body":"');
