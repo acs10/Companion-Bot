@@ -33,3 +33,5 @@ The processes used with the NLTK for processing the chatbot text were the follow
     Note All mentioned processes exist in the processText module of the api.
 
 The work is still in progress, the manual process carried out in the lexical analysis and later. It was next. A dialog base was provided that, based on the post-tokenized words and removing the stopwords, weights were defined for the most relevant words. After labeling them, possible outputs were defined according to the weight and relevance of the sum of the words.
+
+The idea is that for the process of lexical, semantic and discourse analysis, machine learning techniques are used to structure conversations aiming at a better performance of the conversational agent.
