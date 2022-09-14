@@ -20,18 +20,16 @@ For text interpretation and response generation, the NLTK library (Natural Langu
 
 The processes used with the NLTK for processing the chatbot text were the following:
 
-  Tokenization: Being performed by a method called "stopwords".
+    Note All the processes mentioned below exist in the processText module of the API.
 
-  Lexical Analysis: Being performed by the speech-to-text plugin itself in the mobile application.
+  - Tokenization: Being performed by a method called "stopwords".
 
-  Syntactic Analysis: Performed Manually in the provided Dialogs. # Started with nfreqDisc and target methods
+  - Lexical Analysis: Being performed by the speech-to-text plugin itself in the mobile application.
 
-  Semantic Analysis: Performed Manually in the provided Dialogs.
+  - Syntactic Analysis: Performed Manually in the provided Dialogs. # Started with nfreqDisc and target methods
 
-  Discourse Analysis: Performed Manually in the provided Dialogs.
+  - Semantic Analysis: Performed Manually in the provided Dialogs.
 
-    Note All mentioned processes exist in the processText module of the api.
+  - Discourse Analysis: Performed Manually in the provided Dialogs.
 
-The work is still in progress, the manual process carried out in the lexical analysis and later. It was next. A dialog base was provided that, based on the post-tokenized words and removing the stopwords, weights were defined for the most relevant words. After labeling them, possible outputs were defined according to the weight and relevance of the sum of the words.
-
-The idea is that for the process of lexical, semantic and discourse analysis, machine learning techniques are used to structure conversations aiming at a better performance of the conversational agent.
+The work is still in progress, the manual process being carried out in the lexical analysis and later. It happened as follows. A base of dialogues was provided that, based on the post-tokenized words and removing the stopwords, weights were defined for the most relevant words. After labeling them, the possible outputs were defined according to the weight and relevance of the sum of the words.The idea is that for the process of lexical, semantic and discourse analysis, machine learning techniques are used to structure conversations aiming at a better performance of the conversational agent.
